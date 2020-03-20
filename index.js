@@ -16,3 +16,7 @@ io.on('connection', function(socket){
 http.listen(port, function(){
   console.log('listening on *:' + port);
 });
+process.on('SIGTERM', function() {
+    io.close();
+    Object.values(io.of('/').connected).forEach(s => s.disconnect(true));
+});

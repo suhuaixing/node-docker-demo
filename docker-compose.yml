@@ -2,8 +2,10 @@ version: '3.7'
 
 services:
   chat:
-    build: .
-    command: node index.js
+    build: 
+      context: .
+      target: development
+    command: npx nodemon index.js
     ports:
       - '3000:3000'
     volumes:
